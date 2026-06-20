@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tripti Gupta — Software Engineer & Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf8f4;
+    --ink: #181611;
+    --ink-soft: #5a564c;
+    --line: #ddd8cc;
+    --rust: #b8512f;
+    --moss: #4a5c45;
+    --card: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- HEADER / NAV ---------- */
+  header {
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 50;
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+
+  .logo span { color: var(--rust); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+
+  nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav a:hover, nav a:focus-visible { color: var(--rust); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 90px 0 70px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--moss);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--moss);
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2.5rem, 6vw, 4.1rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 26px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rust);
+    font-weight: 500;
+  }
+
+  .hero-sub {
+    font-size: 1.12rem;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin-bottom: 34px;
+  }
+
+  .hero-sub strong { color: var(--ink); font-weight: 600; }
+
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    transition: all 0.2s ease;
+  }
+
+  .pill.fill {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 4px 0 var(--rust);
+  }
+
+  .pill.fill:hover { box-shadow: 3px 4px 0 var(--moss); }
+
+  /* ---------- STAT STRIP ---------- */
+  .stats {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section.block {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 38px;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--rust);
+  }
+
+  .section-head h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.9rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-text {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 680px;
+  }
+
+  .about-text strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- PROJECTS ---------- */
+  .project {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 24px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .project:hover {
+    transform: translateY(-3px);
+    box-shadow: 6px 8px 0 var(--line);
+  }
+
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .project h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+
+  .project-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    background: #f0ece1;
+    color: var(--moss);
+    padding: 5px 11px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .project p {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    margin-bottom: 18px;
+    max-width: 620px;
+  }
+
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .stack-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--rust);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .project-link:hover { border-color: var(--rust); }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 24px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .exp-item:first-of-type { border-top: none; }
+
+  .exp-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    padding-top: 3px;
+  }
+
+  .exp-role {
+    font-weight: 600;
+    font-size: 1.04rem;
+    margin-bottom: 3px;
+  }
+
+  .exp-org {
+    color: var(--rust);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .exp-desc {
+    color: var(--ink-soft);
+    font-size: 0.94rem;
+    max-width: 560px;
+  }
+
+  /* ---------- COMMUNITY / PROOF ---------- */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .proof-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 4px;
+    padding: 34px;
+  }
+
+  .proof-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+  }
+
+  .proof-card p {
+    color: #cfcabd;
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+  }
+
+  .mini-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+
+  .mini-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    color: #e8a07c;
+  }
+
+  .mini-stat-label {
+    font-size: 0.74rem;
+    color: #a39d8c;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .proof-link {
+    color: var(--paper);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--rust);
+    font-size: 0.92rem;
+  }
+
+  .brand-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .brand-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    border: 1px solid #4a463c;
+    color: #cfcabd;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .education-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+  }
+
+  .education-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+  }
+
+  .education-card .org {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .edu-stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 0.88rem;
+  }
+
+  .edu-stat span:last-child {
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer {
+    padding: 70px 0 50px;
+    text-align: center;
+  }
+
+  footer h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  footer h2 em { color: var(--rust); font-style: italic; }
+
+  footer p {
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 50px;
+  }
+
+  .footer-bottom {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .proof-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 6px; }
+    nav ul { gap: 16px; }
+    nav a { font-size: 0.8rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+  a:focus-visible, .pill:focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-inner">
+    <div class="logo">tripti<span>.</span>builds</div>
+    <nav>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="eyebrow">Final-year CS Engineer · Hyderabad-bound</div>
+    <h1>I build software,<br>and <em>audiences</em> who use it.</h1>
+    <p class="hero-sub">
+      Tripti Gupta — backend-leaning full-stack engineer. I've shipped FastAPI services,
+      a multi-agent research system, and a women's health platform — while building a
+      <strong>100K+ engineering community</strong> that proves I can ship things people
+      actually want.
+    </p>
+    <div class="hero-links">
+      <a class="pill fill" href="https://github.com/tripti-gupta700" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="pill" href="https://linkedin.com/in/tripti-gupta-1226a129a" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="pill" href="https://www.instagram.com/tripti.builds" target="_blank" rel="noopener">@tripti.builds ↗</a>
+      <a class="pill" href="mailto:guptatripti3010@gmail.com">Email me</a>
+    </div>
+  </section>
+
+  <section class="stats wrap">
+    <div>
+      <div class="stat-num">100K+</div>
+      <div class="stat-label">community, organic</div>
+    </div>
+    <div>
+      <div class="stat-num">3.3M</div>
+      <div class="stat-label">weekly impressions</div>
+    </div>
+    <div>
+      <div class="stat-num">1M+</div>
+      <div class="stat-label">arXiv papers indexed</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">founding teams built</div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="work">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Selected work</h2>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>Maiyamori</h3>
+        <span class="project-tag">co-founder · live product</span>
+      </div>
+      <p>
+        A women-only maternal wellness platform — community, verified experts, and a wellness
+        journal in one place. Co-founded with a 3-person team; I own web architecture, identity
+        verification, and secure record storage.
+      </p>
+      <div class="stack-row">
+        <span class="stack-chip">Full-stack</span>
+        <span class="stack-chip">Identity verification</span>
+        <span class="stack-chip">Payments</span>
+      </div>
+      <a class="project-link" href="https://www.maiyaamori.com/" target="_blank" rel="noopener">View live site →</a>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>ResearchMind — Autonomous Multi-Agent AI Research Lab</h3>
+        <span class="project-tag">final year project</span>
+      </div>
+      <p>
+        A multi-agent system that automates literature review, gap analysis, and hypothesis
+        generation across ~1M AI/ML arXiv papers — using RAG-grounded reasoning across three
+        coordinated agents (Literature, Hypothesis, Experiment) to cut hallucination and surface
+        real research gaps.
+      </p>
+      <div class="stack-row">
+        <span class="stack-chip">Python</span>
+        <span class="stack-chip">LLMs / RAG</span>
+        <span class="stack-chip">FAISS / Weaviate</span>
+        <span class="stack-chip">LangChain</span>
+      </div>
+      <a class="project-link" href="https://github.com/tripti-gupta700/ResearchMind_2.0" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>Full-Stack EdTech Platform</h3>
+        <span class="project-tag">MERN</span>
+      </div>
+      <p>
+        A direct-monetization platform for EdTech creators — payment gateway, booking workflow,
+        and automated digital delivery, built to eliminate third-party commissions entirely.
+      </p>
+      <div class="stack-row">
+        <span class="stack-chip">MongoDB</span>
+        <span class="stack-chip">Express</span>
+        <span class="stack-chip">React</span>
+        <span class="stack-chip">Node.js</span>
+      </div>
+      <a class="project-link" href="https://github.com/tripti-gupta700" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>PyKV</h3>
+        <span class="project-tag">systems engineering</span>
+      </div>
+      <p>
+        A key-value storage engine built from first principles to understand persistence,
+        indexing trade-offs, and I/O latency — no frameworks, just the fundamentals.
+      </p>
+      <div class="stack-row">
+        <span class="stack-chip">Python</span>
+        <span class="stack-chip">Systems design</span>
+      </div>
+      <a class="project-link" href="https://github.com/tripti-gupta700" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+  </section>
+
+  <section class="block wrap" id="experience">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Nov 2025 — Present</div>
+      <div>
+        <div class="exp-role">Software Engineering Intern (Python)</div>
+        <div class="exp-org">Infosys Springboard</div>
+        <p class="exp-desc">Built FastAPI backend modules using asyncio for async request handling; developed BeautifulSoup scraping pipelines for structured data extraction. Maintained production-grade standards through Agile sprints and code reviews.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">May — Aug 2025</div>
+      <div>
+        <div class="exp-role">Data Analyst Intern</div>
+        <div class="exp-org">FLCS Solutions Pvt. Ltd.</div>
+        <p class="exp-desc">Performed EDA and built automated Python (Pandas, NumPy) pipelines; delivered Power BI dashboards that directly informed business decisions.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Dec 2024 — May 2025</div>
+      <div>
+        <div class="exp-role">Business Analyst Intern</div>
+        <div class="exp-org">ColoredCow</div>
+        <p class="exp-desc">Translated 10+ client requirements into specs and user stories, reducing development rework by ~20%. Led UAT sessions as the technical bridge between stakeholders and engineers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="community">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Beyond code</h2>
+    </div>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <h3>@tripti.builds</h3>
+        <p>A 100K+ community of engineers — built organically, no paid growth. I write, script, edit, and ship content the same way I ship code: end to end, on a deadline, owning the result.</p>
+        <div class="mini-stats">
+          <div>
+            <div class="mini-stat-num">3.3M</div>
+            <div class="mini-stat-label">weekly impressions</div>
+          </div>
+          <div>
+            <div class="mini-stat-num">10–15%</div>
+            <div class="mini-stat-label">engagement rate</div>
+          </div>
+        </div>
+        <a class="proof-link" href="https://www.instagram.com/tripti.builds" target="_blank" rel="noopener">See the work on Instagram ↗</a>
+        <div class="brand-row">
+          <span class="brand-chip">GeeksforGeeks</span>
+          <span class="brand-chip">ProPeers</span>
+          <span class="brand-chip">Matiks</span>
+        </div>
+      </div>
+
+      <div class="education-card">
+        <h3>B.Tech, Computer Science</h3>
+        <div class="org">Women Institute of Technology, Uttarakhand · 2022–2026</div>
+        <div class="edu-stat"><span>CGPA</span><span>8+</span></div>
+        <div class="edu-stat"><span>Intermediate (PCM)</span><span>90.6%</span></div>
+        <div class="edu-stat"><span>High School</span><span>94%</span></div>
+        <div class="edu-stat"><span>Open Source</span><span>GSSOC'25</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's build <em>something real.</em></h2>
+    <p>Open to SDE roles, collaborations, and people solving hard problems.</p>
+    <div class="footer-links">
+      <a class="pill fill" href="mailto:guptatripti3010@gmail.com">guptatripti3010@gmail.com</a>
+      <a class="pill" href="https://linkedin.com/in/tripti-gupta-1226a129a" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="pill" href="https://github.com/tripti-gupta700" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="pill" href="https://www.instagram.com/tripti.builds" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+    <div class="footer-bottom">Tripti Gupta — Dehradun, Uttarakhand, India · +91 7906752700</div>
+  </div>
+</footer>
+
+</body>
+</html>
